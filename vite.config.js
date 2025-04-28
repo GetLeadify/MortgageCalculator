@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import copy from 'rollup-plugin-copy';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
@@ -28,14 +28,17 @@ export default defineConfig({
         ]
       }
     }),
-    {
-      ...copy({
-        targets: [
-          { src: '_headers', dest: 'dist' }
-        ],
-        hook: 'buildEnd'
-      }),
-      enforce: 'post'
-    }
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/sitemap.xml',
+          dest: ''
+        },
+        {
+          src: '_headers',
+          dest: ''
+        }
+      ]
+    })
   ]
 });
