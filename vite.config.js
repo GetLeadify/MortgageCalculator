@@ -34,14 +34,13 @@ export default defineConfig({
         {
           src: 'public/sitemap.xml',
           dest: '.',
-          transform: (contents) => contents.toString()
+          rename: 'sitemap.xml'
         },
         {
           src: '_headers',
           dest: '.'
         }
-      ],
-      hook: 'writeBundle'
+      ]
     })
   ]
 });
