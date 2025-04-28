@@ -32,7 +32,8 @@ export default defineConfig({
       targets: [
         {
           src: 'public/sitemap.xml',
-          dest: '.'
+          dest: '.',
+          transform: (contents) => contents
         },
         {
           src: '_headers',
