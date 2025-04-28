@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import fs from 'fs-extra';
 
 export default defineConfig({
   plugins: [
@@ -33,13 +34,14 @@ export default defineConfig({
         {
           src: 'public/sitemap.xml',
           dest: '.',
-          transform: (contents) => contents
+          transform: (contents) => contents.toString()
         },
         {
           src: '_headers',
           dest: '.'
         }
-      ]
+      ],
+      hook: 'writeBundle'
     })
   ]
 });
