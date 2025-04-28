@@ -32,11 +32,11 @@ export default defineConfig({
       targets: [
         {
           src: 'public/sitemap.xml',
-          dest: ''
+          dest: '.'
         },
         {
           src: '_headers',
-          dest: ''
+          dest: '.'
         }
       ]
     })
